@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Enchantments:[{id:\"power\",lvl:3},{id:\"punch\",lvl:1}]}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
