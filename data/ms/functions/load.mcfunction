@@ -15,6 +15,11 @@ scoreboard objectives add ms_spawn_extra dummy
 scoreboard objectives add ms_mob_tier dummy
 scoreboard objectives add ms_health_multiplier dummy
 scoreboard objectives add ms_damage_multiplier dummy
+# v3.0.0 new scoreboards
+scoreboard objectives add ms_boss_health dummy
+scoreboard objectives add ms_difficulty_mod dummy
+scoreboard objectives add ms_dimension_mod dummy
+scoreboard objectives add ms_temp dummy
 
 scoreboard players set #ms_xp_div ms_player_tmp 15
 scoreboard players set #ms_armor_div ms_player_tmp 10
@@ -59,4 +64,21 @@ execute store result score #ms_damage_multiplier_tier_6 ms_damage_multiplier run
 execute store result score #ms_damage_multiplier_tier_7 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_7 100
 execute store result score #ms_damage_multiplier_tier_8 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_8 100
 
-tellraw @a {"text":"[Mob Scaling] Datapack loaded. Scoreboards initialized.","color":"gold"}
+# v3.0.0 Load boss scaling multipliers
+execute store result score #ms_wither_health_mult ms_temp run data get storage ms:config wither_health_multiplier 100
+execute store result score #ms_wither_damage_mult ms_temp run data get storage ms:config wither_damage_multiplier 100
+execute store result score #ms_dragon_health_mult ms_temp run data get storage ms:config dragon_health_multiplier 100
+execute store result score #ms_dragon_damage_mult ms_temp run data get storage ms:config dragon_damage_multiplier 100
+
+# v3.0.0 Load difficulty modifiers
+execute store result score #ms_peaceful_mod ms_difficulty_mod run data get storage ms:config peaceful_modifier 100
+execute store result score #ms_easy_mod ms_difficulty_mod run data get storage ms:config easy_modifier 100
+execute store result score #ms_normal_mod ms_difficulty_mod run data get storage ms:config normal_modifier 100
+execute store result score #ms_hard_mod ms_difficulty_mod run data get storage ms:config hard_modifier 100
+
+# v3.0.0 Load dimension modifiers
+execute store result score #ms_overworld_mod ms_dimension_mod run data get storage ms:config overworld_modifier 100
+execute store result score #ms_nether_mod ms_dimension_mod run data get storage ms:config nether_modifier 100
+execute store result score #ms_end_mod ms_dimension_mod run data get storage ms:config end_modifier 100
+
+tellraw @a {"text":"[Mob Scaling v3.0.0] Datapack loaded with boss scaling, difficulty integration, and dimension modifiers.","color":"gold"}

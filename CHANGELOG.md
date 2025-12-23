@@ -1,5 +1,53 @@
 # Mob Scaling Datapack – Changelog
 
+## v3.0.0 – Major Feature Expansion
+
+### New Features
+- **Boss Scaling System**
+  - Implemented dynamic scaling for Wither and Ender Dragon
+  - Configurable health and damage multipliers for bosses
+  - Progressive difficulty based on nearby player tiers
+  - Enhanced effects for high-tier players (Speed, Strength)
+
+- **World Difficulty Integration**
+  - Scaling now responds to world difficulty setting
+  - Peaceful: 0.5x modifier (reduced challenge)
+  - Easy: 0.75x modifier
+  - Normal: 1.0x modifier (standard)
+  - Hard: 1.5x modifier (increased challenge)
+
+- **Dimension-Based Scaling**
+  - Different scaling multipliers per dimension
+  - Overworld: 1.0x (baseline)
+  - Nether: 1.3x (increased danger)
+  - End: 1.5x (maximum challenge)
+
+### Configuration Enhancements
+- Added 20+ new configuration options
+- Boss scaling toggle and individual multipliers
+- World difficulty integration toggle
+- Dimension scaling toggle and modifiers
+- Biome scaling framework (disabled by default)
+
+### Technical Improvements
+- Optimized boss scaling to prevent re-processing
+- Fixed configuration boolean evaluation
+- Enhanced tick function with modular feature integration
+- Improved performance with proper entity tagging
+
+### Breaking Changes
+- Configuration file structure updated (old configs need updating)
+- Minimum Minecraft version remains 1.20+
+
+## v2.1.0 – Documentation & Quality of Life
+- Professionalized documentation with improved structure and clarity
+- Fixed tier description inconsistencies (clarified 9 tiers: 0-8)
+- Enhanced README with better formatting and technical accuracy
+- Improved installation and configuration instructions
+- Added comprehensive troubleshooting section
+- Updated version references across all documentation
+- Standardized changelog format for better readability
+
 ## v2.0.0 – Enhanced Scaling & Modded Support
 - Added tiers 5-8 with progressive difficulty scaling
   - Tier 5: Diamond/Netherite gear with Speed/Strength II

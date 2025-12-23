@@ -1,6 +1,6 @@
 {
   "pack": {
     "pack_format": 17,
-    "description": "Mob Scaling v2.0 - Dynamic difficulty with 9 tiers, distance scaling, modded support, and configurable multipliers. Vanilla compatible."
+    "description": "Mob Scaling v3.0.0 - Dynamic difficulty with boss scaling, world difficulty integration, dimension modifiers, 9 tiers (0-8), distance scaling, modded support, and configurable multipliers. Vanilla compatible."
   }
 }
