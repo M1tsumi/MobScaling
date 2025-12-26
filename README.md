@@ -3,7 +3,7 @@
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.20+-brightgreen)](https://www.minecraft.net/)
 [![Datapack](https://img.shields.io/badge/Type-Datapack-blue)](https://minecraft.fandom.com/wiki/Data_pack)
 [![License](https://img.shields.io/badge/License-CC0-lightgrey)](https://creativecommons.org/publicdomain/zero/1.0/)
-[![Version](https://img.shields.io/badge/Version-3.0.0-orange)](https://github.com/M1tsumi/MobScaling)
+[![Version](https://img.shields.io/badge/Version-4.0.0-orange)](https://github.com/M1tsumi/MobScaling)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
 
 A sophisticated vanilla Minecraft datapack that revolutionizes gameplay difficulty through intelligent dynamic scaling. Mob Scaling transforms your Minecraft experience by creating a living, breathing world that adapts to your progression—making every encounter meaningful, challenging, and perfectly balanced for your skill level.
