@@ -1,5 +1,40 @@
 # Mob Scaling Datapack – Changelog
 
+## v4.0.0 – Biome-Aware Scaling & Modular Documentation
+
+### Summary
+- Introduced biome-aware scaling, event hooks, and modular documentation for server operators and modpack authors.
+- Reworked configuration defaults to support dynamic visibility stages, distance tracking, and custom spawn logic.
+- Added a debug/status function and refreshed README with v4 guidance.
+
+### New Features
+- **Biome-Adaptive Scaling**
+  - Tier modifiers now respect biome difficulty weights (dark forests, deserts, ocean depths, the End) for accurate tension increases.
+  - Safe biomes (plains, meadows) clamp strength growth to maintain beginner-friendly zones.
+  - Configurable biome multipliers can be tuned or replaced via `config.json`.
+
+- **Custom Mob Pack Integration**
+  - New hookable `ms:scale/extend` function allows modded mob packs and third-party data packs to inject equipment pools without copying core logic.
+  - Equipment tables now support `minecraft:loot_table` references to reuse existing scaling gear across sets.
+
+- **Event-Driven Difficulty Boosts**
+  - Hostile events (raids, patrols, boss spawns) temporarily bump nearby tiers, ensuring threats remain formidable regardless of player power.
+  - Event modifiers deactivate once raid status ends or all pillagers are defeated.
+
+- **Polished User Experience**
+  - `/function ms:debug/status` prints a tier timeline for debugging, including distance, boss, biome, and event modifiers.
+  - Scoreboard cleanups and tag resets now run after each scaling pass, improving server tick stability.
+  - Documentation sections refreshed with step-by-step configuration guidance and troubleshooting paths.
+
+### Documentation & Testing
+- Created dedicated `documentation.md` chapter for v4 migration guidance plus troubleshooting callouts.
+- Added test functions (`test_spawn_tiers.mcfunction`, `test_spawn_bosses.mcfunction`) for rapid verification of equipment, potions, and scaling logic.
+
+### Enhancements & Fixes
+- Clarified tier boundaries in README and improved README copy to mirror v4 features.
+- Ensured all references to version numbers and dates reflect the December 2025 release cycle.
+- Minor bugfix: `ms:player/update_distance` now recalculates distance bonuses after scoreboard resets to avoid stale modifiers.
+
 ## v3.0.0 – Major Feature Expansion
 
 ### New Features

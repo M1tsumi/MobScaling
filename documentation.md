@@ -1,7 +1,7 @@
 # Mob Scaling Datapack - Technical Documentation
 
-**Version:** v3.0.0  
-**Last Updated:** 2025-12-23
+**Version:** v4.0.0  
+**Last Updated:** 2025-12-26
 
 ## Table of Contents
 1. [System Architecture](#system-architecture)
@@ -141,20 +141,21 @@ Mob Scaling operates on a tick-based system with the following flow:
 
 ## Function Reference
 
-### Core Functions
 - `ms:load` - Initializes datapack and scoreboards
 - `ms:tick` - Main processing loop (executed every tick)
-- `ms:player/calc_tier` - Recalculates player tier
-- `ms:scale/apply` - Applies scaling to nearby mobs
-- `ms:spawn/extra` - Handles additional mob spawning
+- `ms:player/calc_tier` - Recalculates player tier with biome and event bonuses
+- `ms:player/update_biome` - Reads current biome and sets `ms_biome_bonus`
+- `ms:event/check` - Detects raid/patrol progress and updates `ms_event_bonus`
+- `ms:scale/apply` - Applies scaling to nearby mobs and runs `ms:scale/extend`
+- `ms:scale/extend` - Hook entry point for custom equipment/behavior
 - `ms:boss/apply_scaling` - Applies boss scaling (v3.0.0)
 - `ms:difficulty/main` - Applies world difficulty modifiers (v3.0.0)
 - `ms:dimension/main` - Applies dimension modifiers (v3.0.0)
 
 ### Utility Functions
 - `ms:test_spawn_tiers` - Spawns test mobs at all tiers
-- `ms:load` - Reloads and initializes the datapack
-- `ms:tick` - Main processing loop for continuous updates
+- `ms:test_spawn_bosses` - Spawns boss candidates for Wither/Dragon
+- `ms:debug/status` - Prints current tier, bonuses, and event state
 
 ### Tier Functions
 - `ms:scale/tier_0` through `ms:scale/tier_8`
@@ -165,8 +166,11 @@ Mob Scaling operates on a tick-based system with the following flow:
 ### Player Scoreboards
 - `ms_player_xp` - Current XP level
 - `ms_player_armor` - Armor points (0-20)
-- `ms_player_tier` - Calculated tier (0-8)
-- `ms_playtime` - World playtime in ticks
+- `ms_player_tier` - Calculated tier with bonuses applied
+- `ms_player_tier_base` - Base tier before bonuses
+- `ms_player_dist_bonus` - Distance-triggered bonus
+- `ms_biome_bonus` - Bonus calculated from the current biome
+- `ms_event_bonus` - Bonus applied during active raids/patrols
 
 ### Boss Scoreboards
 - `ms_boss_health` - Boss health calculation
@@ -174,8 +178,8 @@ Mob Scaling operates on a tick-based system with the following flow:
 
 ### System Scoreboards
 - `ms_temp` - Temporary calculations
-- `ms_debug` - Debug flag (0/1)
-- `ms_last_spawn` - Last spawn tick
+- `ms_debug` - Debug flag (trigger)
+- `raid_progress` - Minecraft raid progress objective
 
 ### Mob Tags
 - `ms_scaled` - Applied to prevent re-scaling
@@ -236,13 +240,14 @@ Each tier has dedicated loot tables:
 1. Use storage namespace `ms:` for shared data
 2. Check for existing scoreboards before creation
 3. Provide configuration toggles for compatibility
+4. Append functions to the `ms:scale_extend_hooks` tag to inject new scaling behaviors
 
 ## API Reference
 
 ### Public Triggers
 - `/trigger ms_help` - Display help information
 - `/trigger ms_reload` - Reload configuration
-- `/trigger ms_debug` - Toggle debug mode
+- `/trigger ms_debug` - Toggle debug mode and enable `/function ms:debug/status`
 
 ### Boss Testing
 - `/function ms:test_spawn_bosses` - Spawn test bosses (v3.0.0)

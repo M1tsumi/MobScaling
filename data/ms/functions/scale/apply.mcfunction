@@ -11,3 +11,4 @@ execute if score @s ms_mob_tier matches 6 run function ms:scale/tier_6
 execute if score @s ms_mob_tier matches 7 run function ms:scale/tier_7
 execute if score @s ms_mob_tier matches 8 run function ms:scale/tier_8
 tag @s remove scaling
+function ms:scale/extend

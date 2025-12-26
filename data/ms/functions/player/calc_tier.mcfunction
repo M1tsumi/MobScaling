@@ -9,6 +9,11 @@ scoreboard players operation @s ms_player_tmp2 /= #ms_armor_div ms_player_tmp
 # Combine XP and armor tiers
 scoreboard players operation @s ms_player_tier = @s ms_player_tmp
 scoreboard players operation @s ms_player_tier += @s ms_player_tmp2
+scoreboard players operation @s ms_player_tier_base = @s ms_player_tier
+
+# Apply biome and event bonuses
+scoreboard players operation @s ms_player_tier += @s ms_biome_bonus
+scoreboard players operation @s ms_player_tier += @s ms_event_bonus
 
 # Apply max tier limit from config
 execute store result score #ms_tier_max ms_player_tmp run data get storage ms:config max_tier

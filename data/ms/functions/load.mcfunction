@@ -20,6 +20,11 @@ scoreboard objectives add ms_boss_health dummy
 scoreboard objectives add ms_difficulty_mod dummy
 scoreboard objectives add ms_dimension_mod dummy
 scoreboard objectives add ms_temp dummy
+scoreboard objectives add ms_biome_bonus dummy
+scoreboard objectives add ms_event_bonus dummy
+scoreboard objectives add raid_progress minecraft:raid
+scoreboard objectives add ms_debug trigger
+scoreboard objectives add ms_player_tier_base dummy
 
 scoreboard players set #ms_xp_div ms_player_tmp 15
 scoreboard players set #ms_armor_div ms_player_tmp 10
@@ -63,6 +68,21 @@ execute store result score #ms_damage_multiplier_tier_5 ms_damage_multiplier run
 execute store result score #ms_damage_multiplier_tier_6 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_6 100
 execute store result score #ms_damage_multiplier_tier_7 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_7 100
 execute store result score #ms_damage_multiplier_tier_8 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_8 100
+
+# Load biome multiplier constants (defaults to 0 if missing)
+execute store result score #ms_biome_desert ms_temp run data get storage ms:config biome_tier_bonus.desert
+execute store result score #ms_biome_badlands ms_temp run data get storage ms:config biome_tier_bonus.badlands
+execute store result score #ms_biome_dark_forest ms_temp run data get storage ms:config biome_tier_bonus.dark_forest
+execute store result score #ms_biome_crimson_forest ms_temp run data get storage ms:config biome_tier_bonus.crimson_forest
+execute store result score #ms_biome_warped_forest ms_temp run data get storage ms:config biome_tier_bonus.warped_forest
+execute store result score #ms_biome_soul_sand ms_temp run data get storage ms:config biome_tier_bonus.soul_sand_valley
+execute store result score #ms_biome_nether_wastes ms_temp run data get storage ms:config biome_tier_bonus.nether_wastes
+execute store result score #ms_biome_the_end ms_temp run data get storage ms:config biome_tier_bonus.the_end
+execute store result score #ms_biome_end_highlands ms_temp run data get storage ms:config biome_tier_bonus.end_highlands
+execute store result score #ms_biome_end_midlands ms_temp run data get storage ms:config biome_tier_bonus.end_midlands
+
+# Load event multiplier constants
+execute store result score #ms_event_raid ms_temp run data get storage ms:config event_tier_bonus.raid
 
 # v3.0.0 Load boss scaling multipliers
 execute store result score #ms_wither_health_mult ms_temp run data get storage ms:config wither_health_multiplier 100

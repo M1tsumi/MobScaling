@@ -47,19 +47,20 @@
   "overworld_modifier": 1.0,
   "nether_modifier": 1.3,
   "end_modifier": 1.5,
-  "biome_scaling_enabled": 0,
-  "biome_difficulty_multipliers": {
-    "minecraft:desert": 1.1,
-    "minecraft:badlands": 1.2,
-    "minecraft:savanna": 1.1,
-    "minecraft:jungle": 1.2,
-    "minecraft:dark_forest": 1.3,
-    "minecraft:warped_forest": 1.2,
-    "minecraft:crimson_forest": 1.3,
-    "minecraft:soul_sand_valley": 1.1,
-    "minecraft:nether_wastes": 1.0,
-    "minecraft:the_end": 1.5,
-    "minecraft:end_highlands": 1.6,
-    "minecraft:end_midlands": 1.5
+  "biome_scaling_enabled": 1,
+  "biome_tier_bonus": {
+    "desert": 1,
+    "badlands": 1,
+    "dark_forest": 1,
+    "crimson_forest": 1,
+    "warped_forest": 1,
+    "soul_sand_valley": 1,
+    "nether_wastes": 1,
+    "the_end": 2,
+    "end_highlands": 2,
+    "end_midlands": 2
+  },
+  "event_tier_bonus": {
+    "raid": 2
   }
 }

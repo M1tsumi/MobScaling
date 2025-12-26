@@ -4,12 +4,21 @@
 [![Datapack](https://img.shields.io/badge/Type-Datapack-blue)](https://minecraft.fandom.com/wiki/Data_pack)
 [![License](https://img.shields.io/badge/License-CC0-lightgrey)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![Version](https://img.shields.io/badge/Version-3.0.0-orange)](https://github.com/M1tsumi/MobScaling)
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
 
-A vanilla Minecraft datapack that implements dynamic difficulty scaling for hostile mobs based on player progression. Mob Scaling enhances gameplay challenge by adjusting mob equipment, attributes, and effects according to player XP levels and armor ratings.
+A sophisticated vanilla Minecraft datapack that revolutionizes gameplay difficulty through intelligent dynamic scaling. Mob Scaling transforms your Minecraft experience by creating a living, breathing world that adapts to your progression—making every encounter meaningful, challenging, and perfectly balanced for your skill level.
 
 **Author:** WormWoodMC  
 **Target Version:** Java Edition 1.20+  
-**Website:** [quefep.uk](https://quefep.uk)
+**Website:** [quefep.uk](https://quefep.uk)  
+**Last Updated:** December 2025
+
+## v4.0.0 Highlights
+
+- **Biome-Adaptive Scaling:** Tier modifiers now respect biome difficulty data so mobs spawned in brutal regions (dark forests, badlands, deep ocean) gain amplified health, damage, and effects, while safe zones remain approachable.
+- **Custom Mob Pack Hooks:** The new `ms:scale/extend` entry point (managed via the `ms:scale_extend_hooks` tag) lets modded mob pools inject equipment and behaviors without touching the core functions.
+- **Event-Driven Difficulty:** Hostile events (raids, patrols, boss spawns) temporarily bump nearby tiers, keeping threats relevant even for well-geared teams.
+- **Debug-Friendly UX:** `/function ms:debug/status` shows base tier, biome/event bonuses, distance, and raid progress; scoreboard cleanup happens alongside regular tick work to prevent stale modifiers.
 
 ## Overview
 
@@ -174,6 +183,13 @@ Test the datapack with these commands:
 /scoreboard objectives add ms_dummy dummy
 /scoreboard players set @s ms_tier 4
 ```
+
+### v4 Verification
+
+- `/function ms:debug/status` (or `/trigger ms_debug set 1`) prints a live breakdown: base tier, biome bonus, event bonus, distance bonus, and raid progress. Run this after altering XP or armor to confirm bonuses apply.
+- Start a raid (`/execute in minecraft:overworld run summon minecraft:vindicator ~ ~ ~`) or wait for natural pillager events. Observe `/function ms:debug/status` to verify `ms_event_bonus` increases tiers and resets after the raid is cleared.
+- Travel between distinct biomes (plains → dark forest → badlands) while monitoring `ms_biome_bonus` via the debug output to ensure biome multipliers align with expectations.
+- Run `/reload` and monitor `/datapack list` plus `/function ms:debug/status` to ensure configuration changes (biome/event maps) persist.
 
 ## Troubleshooting
 
