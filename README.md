@@ -3,7 +3,7 @@
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.20+-brightgreen)](https://www.minecraft.net/)
 [![Datapack](https://img.shields.io/badge/Type-Datapack-blue)](https://minecraft.fandom.com/wiki/Data_pack)
 [![License](https://img.shields.io/badge/License-CC0-lightgrey)](https://creativecommons.org/publicdomain/zero/1.0/)
-[![Version](https://img.shields.io/badge/Version-4.0.0-orange)](https://github.com/M1tsumi/MobScaling)
+[![Version](https://img.shields.io/badge/Version-5.0.0-orange)](https://github.com/M1tsumi/MobScaling)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
 
 A sophisticated vanilla Minecraft datapack that revolutionizes gameplay difficulty through intelligent dynamic scaling. Mob Scaling transforms your Minecraft experience by creating a living, breathing world that adapts to your progression—making every encounter meaningful, challenging, and perfectly balanced for your skill level.
@@ -11,9 +11,9 @@ A sophisticated vanilla Minecraft datapack that revolutionizes gameplay difficul
 **Author:** WormWoodMC  
 **Target Version:** Java Edition 1.20+  
 **Website:** [quefep.uk](https://quefep.uk)  
-**Last Updated:** December 2025
+**Last Updated:** March 29, 2026
 
-## v4.0.0 Highlights
+## v5.0.0 Highlights
 
 - **Biome-Adaptive Scaling:** Tier modifiers now respect biome difficulty data so mobs spawned in brutal regions (dark forests, badlands, deep ocean) gain amplified health, damage, and effects, while safe zones remain approachable.
 - **Custom Mob Pack Hooks:** The new `ms:scale/extend` entry point (managed via the `ms:scale_extend_hooks` tag) lets modded mob pools inject equipment and behaviors without touching the core functions.
@@ -35,6 +35,9 @@ Mob Scaling is a server-side datapack that provides intelligent difficulty adjus
 - **Effect System:** High-tier mobs gain beneficial effects (Strength, Speed, Regeneration) for increased challenge
 - **Performance Optimized:** Mobs are tagged after scaling to prevent redundant calculations
 - **Distance-Based Difficulty:** Optional scaling based on spawn distance from world spawn
+- **Per-Player Scaling & Modes:** New `per_player_scaling` toggle and `scaling_mode` options for relative/absolute scaling
+- **Boss Spawn Control:** New boss spawn limit and control toggles to prevent boss spam on busy servers
+- **Armor Weight & Tier Thresholds:** Optional armor-weighted tier influence and configurable tier thresholds via `config.json`
 - **Modded Content Support:** Toggle support for modded equipment in configuration
 - **Health/Damage Multipliers:** Configurable attribute scaling for higher tiers
 
@@ -156,6 +159,26 @@ Edit configuration values in `data/ms/storage/config.json`:
 - **Spawn Ranges:** Edit distance values in `data/ms/functions/scale/apply.mcfunction`
 - **Effects:** Configure potion effects in tier-specific function files
 
+### Absolute Scaling Mode (optional)
+
+- **What it does:** When `scaling_mode_absolute` is set to `1` in `data/ms/storage/config.json`, the datapack will set mobs' base attributes (for example, `generic.max_health`) directly according to configured tier multipliers. When set to `0` the datapack uses attribute modifiers which are less invasive.
+
+- **How to enable at runtime:**
+
+```mcfunction
+/data merge storage ms:config {scaling_mode_absolute:1}
+/function ms:load
+```
+
+- **Quick test:** Spawn a mob and inspect its base health in-game:
+
+```mcfunction
+# /summon zombie ~ ~ ~
+# /execute as @e[type=zombie,limit=1,sort=nearest] run data get entity @s Attributes[0]
+```
+
+- **Notes:** Absolute mode changes base attribute values and can conflict with other datapacks that set entity base attributes. Use for testing or when you explicitly want deterministic base values per tier. Attack damage scaling continues to use modifier-based writes unless otherwise configured.
+
 ## Compatibility
 
 | Minecraft Version | Supported | Notes |
@@ -227,5 +250,5 @@ Developed by WormWoodMC for the Quefep creative collective.
 **Website:** [quefep.uk](https://quefep.uk)
 
 ---
-*Last updated: v3.0.0* 
+*Last updated: v5.0.0* 
 

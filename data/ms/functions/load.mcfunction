@@ -47,6 +47,19 @@ execute store result score #ms_spawn_extra_tier_4 ms_player_tmp run data get sto
 execute store result score #ms_spawn_multiplier ms_player_tmp run data get storage ms:config spawn_multiplier
 execute store result score #ms_spawn_cooldown ms_player_tmp run data get storage ms:config spawn_cooldown
 execute store result score #ms_spawn_enabled ms_player_tmp run data get storage ms:config spawn_extra_enabled
+execute store result score #ms_per_player_scaling ms_player_tmp run data get storage ms:config per_player_scaling
+execute store result score #ms_scaling_absolute ms_player_tmp run data get storage ms:config scaling_mode_absolute
+execute store result score #ms_enable_boss_spawn_ctrl ms_player_tmp run data get storage ms:config enable_boss_spawn_control
+execute store result score #ms_boss_spawn_limit ms_player_tmp run data get storage ms:config boss_spawn_limit
+execute store result score #ms_armor_weight ms_player_tmp run data get storage ms:config armor_weight_enabled
+execute store result score #ms_tier_threshold_1 ms_player_tmp run data get storage ms:config tier_thresholds.tier_1
+execute store result score #ms_tier_threshold_2 ms_player_tmp run data get storage ms:config tier_thresholds.tier_2
+execute store result score #ms_tier_threshold_3 ms_player_tmp run data get storage ms:config tier_thresholds.tier_3
+execute store result score #ms_tier_threshold_4 ms_player_tmp run data get storage ms:config tier_thresholds.tier_4
+execute store result score #ms_tier_threshold_5 ms_player_tmp run data get storage ms:config tier_thresholds.tier_5
+execute store result score #ms_tier_threshold_6 ms_player_tmp run data get storage ms:config tier_thresholds.tier_6
+execute store result score #ms_tier_threshold_7 ms_player_tmp run data get storage ms:config tier_thresholds.tier_7
+execute store result score #ms_tier_threshold_8 ms_player_tmp run data get storage ms:config tier_thresholds.tier_8
 scoreboard players set #ms_distance_threshold_near_sq ms_player_tmp 0
 scoreboard players operation #ms_distance_threshold_near_sq ms_player_tmp = #ms_distance_threshold_near ms_player_tmp
 scoreboard players operation #ms_distance_threshold_near_sq ms_player_tmp *= #ms_distance_threshold_near ms_player_tmp
@@ -58,12 +71,22 @@ scoreboard players operation #ms_distance_threshold_far_sq ms_player_tmp = #ms_d
 scoreboard players operation #ms_distance_threshold_far_sq ms_player_tmp *= #ms_distance_threshold_far ms_player_tmp
 
 # Initialize health multipliers
+execute store result score #ms_health_multiplier_tier_0 ms_health_multiplier run data get storage ms:config health_multiplier_tier_0 100
+execute store result score #ms_health_multiplier_tier_1 ms_health_multiplier run data get storage ms:config health_multiplier_tier_1 100
+execute store result score #ms_health_multiplier_tier_2 ms_health_multiplier run data get storage ms:config health_multiplier_tier_2 100
+execute store result score #ms_health_multiplier_tier_3 ms_health_multiplier run data get storage ms:config health_multiplier_tier_3 100
+execute store result score #ms_health_multiplier_tier_4 ms_health_multiplier run data get storage ms:config health_multiplier_tier_4 100
 execute store result score #ms_health_multiplier_tier_5 ms_health_multiplier run data get storage ms:config health_multiplier_tier_5 100
 execute store result score #ms_health_multiplier_tier_6 ms_health_multiplier run data get storage ms:config health_multiplier_tier_6 100
 execute store result score #ms_health_multiplier_tier_7 ms_health_multiplier run data get storage ms:config health_multiplier_tier_7 100
 execute store result score #ms_health_multiplier_tier_8 ms_health_multiplier run data get storage ms:config health_multiplier_tier_8 100
 
 # Initialize damage multipliers
+execute store result score #ms_damage_multiplier_tier_0 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_0 100
+execute store result score #ms_damage_multiplier_tier_1 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_1 100
+execute store result score #ms_damage_multiplier_tier_2 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_2 100
+execute store result score #ms_damage_multiplier_tier_3 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_3 100
+execute store result score #ms_damage_multiplier_tier_4 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_4 100
 execute store result score #ms_damage_multiplier_tier_5 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_5 100
 execute store result score #ms_damage_multiplier_tier_6 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_6 100
 execute store result score #ms_damage_multiplier_tier_7 ms_damage_multiplier run data get storage ms:config damage_multiplier_tier_7 100
@@ -101,4 +124,4 @@ execute store result score #ms_overworld_mod ms_dimension_mod run data get stora
 execute store result score #ms_nether_mod ms_dimension_mod run data get storage ms:config nether_modifier 100
 execute store result score #ms_end_mod ms_dimension_mod run data get storage ms:config end_modifier 100
 
-tellraw @a {"text":"[Mob Scaling v3.0.0] Datapack loaded with boss scaling, difficulty integration, and dimension modifiers.","color":"gold"}
+tellraw @a {"text":"[Mob Scaling v5.0.0] Datapack loaded — new config options and features available. Run /function ms:debug/status to verify initialization.","color":"gold"}

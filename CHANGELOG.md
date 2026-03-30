@@ -1,5 +1,17 @@
 # Mob Scaling Datapack – Changelog
 
+## v5.0.0 – 2026-03-29 – Per-player scaling, boss spawn control & config expansion
+
+### Summary
+- Added `per_player_scaling` toggle and `scaling_mode_absolute` option to allow relative vs absolute attribute application
+- Added boss spawn control: `enable_boss_spawn_control` and `boss_spawn_limit` to prevent boss spam on busy servers
+- Added `armor_weight_enabled` and configurable `tier_thresholds` for fine-grained tiering behavior
+- Updated `pack.mcmeta`, startup message, documentation, and README to v5.0.0
+- Loaded new config keys at datapack initialization for future logic hooks
+
+### Notes
+- New options are present in `data/ms/storage/config.json`. Some new behaviors require wiring into specific functions (e.g., tier calculation or boss spawning) and are exposed as toggles for server operators now. See `documentation.md` for usage examples.
+
 ## v4.0.0 – Biome-Aware Scaling & Modular Documentation
 
 ### Summary

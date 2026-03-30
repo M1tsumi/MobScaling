@@ -1,7 +1,7 @@
 # Mob Scaling Datapack - Technical Documentation
 
-**Version:** v4.0.0  
-**Last Updated:** 2025-12-26
+**Version:** v5.0.0  
+**Last Updated:** 2026-03-29
 
 ## Table of Contents
 1. [System Architecture](#system-architecture)
@@ -56,14 +56,32 @@ Mob Scaling operates on a tick-based system with the following flow:
 {
   "difficulty_enabled": 1,        // Enable/disable scaling (0/1)
   "difficulty_offset": 0,         // Global difficulty modifier
+  "per_player_scaling": 1,        // Enable per-player separate scaling (0/1)
+  "scaling_mode_absolute": 0,     // Use absolute attribute values when set (0/1)
   "max_tier": 8,                  // Maximum achievable tier
   "modded_content_enabled": 1,    // Enable modded equipment
   "boss_scaling_enabled": 1,      // Enable boss scaling
+  "enable_boss_spawn_control": 1, // Enable boss spawn limiting
+  "boss_spawn_limit": 1,          // Max simultaneous scaled bosses
+  "armor_weight_enabled": 1,      // Use armor rating weight in tier calculation
   "world_difficulty_integration": 1, // Enable difficulty modifiers
   "dimension_scaling_enabled": 1, // Enable dimension modifiers
   "biome_scaling_enabled": 0      // Enable biome scaling (experimental)
 }
 ```
+
+### Absolute Scaling Mode
+
+- **Key:** `scaling_mode_absolute` (0/1)
+- **Description:** When enabled (`1`), the datapack writes mob base attributes directly (for example `Attributes[0].Base` for `generic.max_health`) using the per-tier multipliers specified in `config.json`. When disabled (`0`), the datapack applies attribute modifiers instead (safer for compatibility with other datapacks/mods).
+- **Enable at runtime:** Edit `data/ms/storage/config.json` and set `"scaling_mode_absolute": 1`, then run:
+
+```mcfunction
+/data merge storage ms:config {scaling_mode_absolute:1}
+/function ms:load
+```
+
+- **Notes:** Absolute mode changes base attribute values and can conflict with other datapacks that set entity base attributes. Use for testing or when you explicitly want deterministic base values per tier. Attack damage scaling continues to use modifier-based writes unless otherwise configured.
 
 ### Distance Scaling
 ```json
